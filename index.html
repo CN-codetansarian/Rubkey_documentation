@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Rubkey Documentation">
+    <meta name="author" content="Taha ansarianpour">
+    <title>Rubkey Documentation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&family=Roboto+Mono:wght@400;500;700&display=swap');
+        :root {
+            --md-hue: 225deg;
+            --md-primary-fg-color: #4051b5;
+            --md-primary-fg-color--light: #5d6cc0;
+            --md-primary-fg-color--dark: #303fa1;
+            --md-primary-bg-color: #fff;
+            --md-accent-fg-color: #526cfe;
+            --md-accent-fg-color--transparent: #526cfe1a;
+            --md-default-fg-color: #000000de;
+            --md-default-fg-color--light: #0000008a;
+            --md-default-fg-color--lighter: #00000052;
+            --md-default-fg-color--lightest: #00000012;
+            --md-default-bg-color: #fff;
+            --md-code-fg-color: #36464e;
+            --md-code-bg-color: #f5f5f5;
+            --md-code-hl-color: #4287ff;
+            --md-code-hl-color--light: #4287ff1a;
+            --md-code-hl-number-color: #d52a2a;
+            --md-code-hl-special-color: #db1457;
+            --md-code-hl-function-color: #a846b9;
+            --md-code-hl-constant-color: #6e59d9;
+            --md-code-hl-keyword-color: #3f6ec6;
+            --md-code-hl-string-color: #1c7d4d;
+            --md-typeset-color: var(--md-default-fg-color);
+            --md-typeset-a-color: var(--md-primary-fg-color);
+            --md-shadow-z1: 0 0.2rem 0.5rem #0000000d, 0 0 0.05rem #0000001a;
+            --md-shadow-z2: 0 0.2rem 0.5rem #0000001a, 0 0 0.05rem #00000040;
+            --md-shadow-z3: 0 0.2rem 0.5rem #0003, 0 0 0.05rem #00000059;
+        }
+        [data-md-color-scheme="slate"] {
+            --md-hue: 225deg;
+            --md-default-fg-color: hsla(var(--md-hue),15%,90%,0.82);
+            --md-default-fg-color--light: hsla(var(--md-hue),15%,90%,0.56);
+            --md-default-fg-color--lighter: hsla(var(--md-hue),15%,90%,0.32);
+            --md-default-fg-color--lightest: hsla(var(--md-hue),15%,90%,0.12);
+            --md-default-bg-color: hsla(var(--md-hue),15%,14%,1);
+            --md-default-bg-color--light: hsla(var(--md-hue),15%,14%,0.54);
+            --md-code-fg-color: hsla(var(--md-hue),18%,86%,0.82);
+            --md-code-bg-color: hsla(var(--md-hue),15%,18%,1);
+            --md-code-hl-color: #2977ff;
+            --md-code-hl-color--light: #2977ff1a;
+            --md-code-hl-number-color: #e6695b;
+            --md-code-hl-special-color: #f06090;
+            --md-code-hl-function-color: #c973d9;
+            --md-code-hl-constant-color: #9383e2;
+            --md-code-hl-keyword-color: #6791e0;
+            --md-code-hl-string-color: #2fb170;
+            --md-typeset-color: var(--md-default-fg-color);
+            --md-typeset-a-color: var(--md-primary-fg-color);
+        }
+        [data-md-color-scheme="slate"] .md-typeset h1,
+        [data-md-color-scheme="slate"] .md-typeset h2,
+        [data-md-color-scheme="slate"] .md-typeset h3,
+        [data-md-color-scheme="slate"] .md-typeset h4,
+        [data-md-color-scheme="slate"] .md-typeset p,
+        [data-md-color-scheme="slate"] .md-typeset li,
+        [data-md-color-scheme="slate"] .md-typeset .admonition-title,
+        [data-md-color-scheme="slate"] .md-typeset .card h4,
+        [data-md-color-scheme="slate"] .md-typeset .card p {
+            color: var(--md-default-fg-color);
+        }
+        [data-md-color-scheme="slate"] .md-typeset code {
+            color: var(--md-code-fg-color);
+        }
+        [data-md-color-scheme="slate"] .admonition {
+            background-color: var(--md-default-bg-color--light);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+            background-color: var(--md-default-bg-color);
+            color: var(--md-typeset-color);
+            font-size: 0.8rem;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            transition: background-color 0.25s, color 0.25s;
+        }
+        .md-header {
+            background-color: var(--md-primary-fg-color);
+            color: var(--md-primary-bg-color);
+            position: sticky;
+            top: 0;
+            z-index: 4;
+            box-shadow: var(--md-shadow-z1);
+        }
+        .md-header__inner {
+            max-width: 61rem;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.4rem 0.8rem;
+        }
+        .md-header__button {
+            color: currentcolor;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.4rem;
+            margin: 0.2rem;
+            transition: opacity 0.25s;
+            display: flex;
+            align-items: center;
+        }
+        .md-header__button:hover { opacity: 0.7; }
+        .md-header__title { flex-grow: 1; font-size: 0.9rem; font-weight: 700; }
+        .md-header__topic { display: flex; align-items: center; gap: 0.5rem; }
+        .md-header__option { display: flex; gap: 0.2rem; }
+        .md-container { display: flex; max-width: 61rem; margin: 0 auto; padding: 1.5rem 0.8rem; gap: 1.5rem; }
+        .md-sidebar { position: sticky; top: 4rem; width: 14rem; height: fit-content; flex-shrink: 0; }
+        .md-nav { font-size: 0.7rem; line-height: 1.3; }
+        .md-nav__title {
+            color: var(--md-default-fg-color--light);
+            font-weight: 700;
+            padding: 0 0.6rem 0.5rem;
+            border-bottom: 1px solid var(--md-default-fg-color--lightest);
+            margin-bottom: 0.5rem;
+        }
+        .md-nav__list { list-style: none; }
+        .md-nav__item { margin: 0.4rem 0; }
+        .md-nav__link {
+            display: block;
+            padding: 0.3rem 0.6rem;
+            color: var(--md-typeset-a-color);
+            text-decoration: none;
+            transition: color 0.125s, background-color 0.125s;
+            border-radius: 0.1rem;
+        }
+        .md-nav__link:hover {
+            color: var(--md-accent-fg-color);
+            background-color: var(--md-accent-fg-color--transparent);
+        }
+        .md-nav__link--active { color: var(--md-accent-fg-color); font-weight: 700; }
+        .md-content { flex: 1; min-width: 0; }
+        .md-typeset { font-size: 0.8rem; line-height: 1.6; }
+        .md-typeset h1 { font-size: 2rem; font-weight: 300; margin: 0 0 1.25rem; color: var(--md-default-fg-color--light); border-bottom: 1px solid var(--md-default-fg-color--lightest); padding-bottom: 0.5rem; }
+        .md-typeset h2 { font-size: 1.5625rem; font-weight: 300; margin: 1.6rem 0 0.64rem; }
+        .md-typeset h3 { font-size: 1.25rem; font-weight: 400; margin: 1.6rem 0 0.8rem; }
+        .md-typeset h4 { font-weight: 700; margin: 1rem 0; }
+        .md-typeset p { margin: 1em 0; }
+        .md-typeset a { color: var(--md-typeset-a-color); text-decoration: none; transition: color 0.125s; }
+        .md-typeset a:hover { color: var(--md-accent-fg-color); }
+        .md-typeset code {
+            background-color: var(--md-code-bg-color);
+            border-radius: 0.1rem;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.85em;
+            padding: 0 0.294em;
+            direction: ltr;
+            display: inline-block;
+        }
+        .md-typeset pre {
+            background-color: var(--md-code-bg-color);
+            border-radius: 0.1rem;
+            line-height: 1.4;
+            margin: 1em 0;
+            overflow: auto;
+            padding: 0.772rem 1.176rem;
+            position: relative;
+            direction: ltr;
+            text-align: left;
+        }
+        .md-typeset pre code { background: none; padding: 0; display: block; direction: ltr; text-align: left; }
+        .md-clipboard {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: var(--md-code-bg-color);
+            border: none;
+            border-radius: 0.1rem;
+            color: var(--md-default-fg-color--lightest);
+            cursor: pointer;
+            padding: 0.3rem;
+            transition: color 0.25s;
+            z-index: 1;
+        }
+        .md-clipboard:hover { color: var(--md-accent-fg-color); }
+        .md-clipboard svg { width: 1.2rem; height: 1.2rem; display: block; }
+        .md-typeset ul, .md-typeset ol { margin: 1em 0; padding-right: 1.25rem; }
+        .md-typeset li { margin-bottom: 0.5em; }
+        .md-typeset hr { border: none; border-bottom: 0.05rem solid var(--md-default-fg-color--lightest); margin: 1.5em 0; }
+        .md-typeset .admonition {
+            background-color: var(--md-default-bg-color);
+            border: 0.075rem solid var(--md-primary-fg-color);
+            border-radius: 0.2rem;
+            box-shadow: var(--md-shadow-z1);
+            margin: 1.5625em 0;
+            padding: 0 0.6rem;
+        }
+        .md-typeset .admonition-title {
+            background-color: var(--md-accent-fg-color--transparent);
+            font-weight: 700;
+            margin: 0 -0.6rem;
+            padding: 0.4rem 2rem 0.4rem 0.6rem;
+            position: relative;
+        }
+        .md-typeset table {
+            background-color: var(--md-default-bg-color);
+            border: 0.05rem solid var(--md-typeset-table-color, #0000001f);
+            border-radius: 0.1rem;
+            margin: 1em 0;
+            width: 100%;
+        }
+        .md-typeset th {
+            background-color: var(--md-primary-fg-color);
+            color: var(--md-primary-bg-color);
+            font-weight: 700;
+            padding: 0.9375em 1.25em;
+            text-align: right;
+        }
+        .md-typeset td {
+            border-top: 0.05rem solid var(--md-typeset-table-color, #0000001f);
+            padding: 0.9375em 1.25em;
+        }
+        .termynal {
+            background: #252a33;
+            color: #eee;
+            border-radius: 4px;
+            padding: 75px 45px 35px;
+            position: relative;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 15px;
+            line-height: 1.2;
+            margin: 1em 0;
+            direction: ltr;
+            text-align: left;
+        }
+        .termynal:before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #d9515d;
+            box-shadow: 25px 0 0 #f4c025, 50px 0 0 #3ec930;
+        }
+        .termynal:after {
+            content: 'bash';
+            position: absolute;
+            color: #a2a2a2;
+            top: 5px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+        [data-ty] { display: block; line-height: 2; }
+        [data-ty="input"]:before { content: '$'; margin-right: 0.75em; color: #a2a2a2; }
+        .md-typeset .grid {
+            display: grid;
+            grid-gap: 0.4rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+            margin: 1em 0;
+        }
+        .md-typeset .grid .card {
+            border: 0.05rem solid var(--md-default-fg-color--lightest);
+            border-radius: 0.1rem;
+            padding: 0.8rem;
+            transition: border 0.25s, box-shadow 0.25s;
+        }
+        .md-typeset .grid .card:hover { border-color: transparent; box-shadow: var(--md-shadow-z2); }
+        .md-top {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            background-color: var(--md-default-bg-color);
+            border-radius: 1.6rem;
+            box-shadow: var(--md-shadow-z2);
+            color: var(--md-default-fg-color--light);
+            padding: 0.4rem 0.8rem;
+            font-size: 0.7rem;
+            text-decoration: none;
+            z-index: 2;
+            transition: color 0.125s, background-color 0.125s;
+        }
+        .md-top:hover { background-color: var(--md-accent-fg-color); color: var(--md-accent-bg-color); }
+        @media (max-width: 768px) { .md-container { flex-direction: column; } .md-sidebar { position: static; width: 100%; } }
+        @media print { .md-sidebar, .md-header, .md-footer, .md-top, .md-clipboard { display: none; } }
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--md-default-fg-color);
+            color: var(--md-default-bg-color);
+            padding: 0.5rem 1rem;
+            border-radius: 0.2rem;
+            font-size: 0.7rem;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        .toast.show { opacity: 1; }
+        .method-table code { font-size: 0.7rem; }
+        .method-table td { padding: 0.5rem; }
+    </style>
+</head>
+<body data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="amber">
+    <div class="toast" id="toast">کپی شد</div>
+    <header class="md-header">
+        <div class="md-header__inner">
+            <div class="md-header__title">
+                <div class="md-header__topic">مستندات Rubkey v2.0.7</div>
+            </div>
+            <div class="md-header__option">
+                <button class="md-header__button" id="color-palette-toggle" aria-label="تغییر حالت روز/شب">
+                    <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                        <path d="M12 3a9 9 0 0 0 9 9c0 .46-.04.92-.1 1.36a7.5 7.5 0 0 1-8.26 8.26A9 9 0 0 1 12 3z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="md-container">
+        <aside class="md-sidebar">
+            <nav class="md-nav">
+                <div class="md-nav__title">📚 فهرست مطالب</div>
+                <ul class="md-nav__list">
+                    <li class="md-nav__item"><a href="#intro" class="md-nav__link">✨ معرفی</a></li>
+                    <li class="md-nav__item"><a href="#install" class="md-nav__link">🧰 نصب</a></li>
+                    <li class="md-nav__item"><a href="#quickstart" class="md-nav__link">🍀 شروع سریع</a></li>
+                    <li class="md-nav__item"><a href="#sync-async" class="md-nav__link">⚡ Sync vs Async</a></li>
+                    <li class="md-nav__item"><a href="#imports" class="md-nav__link">📦 ایمپورت ها</a></li>
+                    <li class="md-nav__item"><a href="#all_methods" class="md-nav__link">⚙️ متدها</a></li>
+                    <li class="md-nav__item"><a href="#all_classes" class="md-nav__link">📋 کلاس ها</a></li>
+                    <li class="md-nav__item"><a href="#all_variables" class="md-nav__link">🔧 متغیرها</a></li>
+                    <li class="md-nav__item"><a href="#keyboard" class="md-nav__link">🎛️ کیپدها</a></li>
+                    <li class="md-nav__item"><a href="#sendfile" class="md-nav__link">📁 ارسال فایل</a></li>
+                    <li class="md-nav__item"><a href="#webhook" class="md-nav__link">🌐 Webhook</a></li>
+                    <li class="md-nav__item"><a href="#ban" class="md-nav__link">🚫 بن و آنبن</a></li>
+                    <li class="md-nav__item"><a href="#filters" class="md-nav__link">🔍 فیلترها</a></li>
+                    <li class="md-nav__item"><a href="#async-section" class="md-nav__link">⚡ Async</a></li>
+                    <li class="md-nav__item"><a href="#selfbot" class="md-nav__link">🤖 SelfBot</a></li>
+                    <li class="md-nav__item"><a href="#sendcode" class="md-nav__link">📱 SendCodeButton</a></li>
+                    <li class="md-nav__item"><a href="#metadata" class="md-nav__link"></a></li>
+                    <li class="md-nav__item"><a href="#middleware" class="md-nav__link">🔗 Middleware و Router</a></li>
+                    <li class="md-nav__item"><a href="#session" class="md-nav__link">💾 Session و Database</a></li>
+                    <li class="md-nav__item"><a href="#groupbot" class="md-nav__link">👥 GroupBot</a></li>
+                    <li class="md-nav__item"><a href="#channelbot" class="md-nav__link">📢 ChannelBot</a></li>
+                    <li class="md-nav__item"><a href="#examples" class="md-nav__link">📝 مثال ها</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="md-content">
+            <article class="md-typeset">
+                <h1 id="intro">📖 کتابخانه Rubkey</h1>
+                <p><strong>Rubkey</strong> یک فریمورک مدرن و قدرتمند پایتون برای ساخت ربات های پیام رسان <strong>روبیکا</strong> است.</p>
+                <div class="admonition">
+                    <div class="admonition-title">چرا Rubkey</div>
+                    <ul>
+                        <li><strong>آماده</strong> - نصب از طریق pip و آغاز استفاده در کمترین زمان</li>
+                        <li><strong>ساده</strong> - ساختاری تمیز، قابل فهم و مناسب برای مبتدیان</li>
+                        <li><strong>سریع</strong> - استفاده از فناوری های مدرن و کدنویسی بهینه</li>
+                        <li><strong>پشتیبانی از Async</strong> - طراحی همزمان و غیرهمزمان</li>
+                        <li><strong>قدرتمند</strong> - ارائه تمام قابلیت های API ربات روبیکا</li>
+                    </ul>
+                </div>
+
+                <h1 id="install">🧰 نصب و راه اندازی</h1>
+                <div class="termynal"><div data-ty="input">pip install rubkey</div></div>
+                <pre><code><span style="color: #6791e0;">import</span> rubkey
+<span style="color: #6791e0;">print</span>(rubkey.__version__)  <span style="color: #6e59d9;"># 2.0.7</span></code></pre>
+                <div class="admonition">
+                    <div class="admonition-title">📌 پیش نیازها</div>
+                    <ul>
+                        <li>Python نسخه 3.8 یا بالاتر</li>
+                        <li>توکن ربات از <a href="https://rubika.ir/BotFather">@BotFather</a></li>
+                    </ul>
+                </div>
+
+                <h1 id="quickstart">🍀 شروع سریع</h1>
+                <pre><code><span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> Rubkey
+
+bot = Rubkey(token=<span style="color: #2fb170;">"TOKEN"</span>)
+
+<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"start"</span>)
+<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start</span>(msg):
+    msg.reply(<span style="color: #2fb170;">"سلام"</span>)
+
+bot.run()</code></pre>
+
+                <h1 id="sync-async">⚡ تفاوت Sync و Async</h1>
+                <pre><code><span style="color: #6e59d9;"># Sync - ساده</span>
+<span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> Rubkey
+
+bot = Rubkey(token=<span style="color: #2fb170;">"TOKEN"</span>)
+
+<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"start"</span>)
+<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start</span>(msg):
+    msg.reply(<span style="color: #2fb170;">"سلام"</span>)
+
+bot.run()
+
+<span style="color: #6e59d9;"># Async - سریعتر</span>
+<span style="color: #6791e0;">import</span> asyncio
+<span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> AsyncBot
+
+bot = AsyncBot(token=<span style="color: #2fb170;">"TOKEN"</span>)
+
+<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"start"</span>)
+<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start</span>(msg):
+    <span style="color: #c973d9;">await</span> msg.reply(<span style="color: #2fb170;">"سلام"</span>)
+
+<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">main</span>():
+    <span style="color: #c973d9;">await</span> bot.run()
+
+asyncio.run(main())</code></pre>
+
+                <h1 id="imports">📦 ایمپورت ها</h1>
+                <pre><code><span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> Rubkey, Message, Keypad, KeyButton, InlineKeypad, InlineButton
+<span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> TextboxButton, FileButton, BarcodeButton, SendFile
+<span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> Database, Session, WebhookServer
+<span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> SelectionButton, NumberPickerButton, StringPickerButton
+<span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> LinkButton, BarcodeInlineButton, TextboxInlineButton, CalendarButton
+<span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> Filters, MiddlewareManager, Router
+<span style="color: #6791e0;">from</span> rubkey.metadata <span style="color: #6791e0;">import</span> Metadata, MetadataPart
+<span style="color: #6791e0;">from</span> rubkey.markdown <span style="color: #6791e0;">import</span> MarkdownParser
+<span style="color: #6791e0;">from</span> rubkey.groupbot <span style="color: #6791e0;">import</span> GroupBot, GroupHandlers
+<span style="color: #6791e0;">from</span> rubkey.channel <span style="color: #6791e0;">import</span> ChannelBot, ChannelHandlers
+<span style="color: #6791e0;">from</span> rubkey.plugin <span style="color: #6791e0;">import</span> Plugin, PluginLoader, PluginInfo
+<span style="color: #6791e0;">from</span> rubkey.async_rubkey <span style="color: #6791e0;">import</span> AsyncBot, AsyncGroupBot, AsyncChannelBot, AsyncSendFile, AsyncWebhookServer
+<span style="color: #6791e0;">from</span> rubkey.selfbot <span style="color: #6791e0;">import</span> SelfBot, SendCodeButton</code></pre>
+
+                <h1 id="all_methods">⚙️ متدها</h1>
+                <table class="method-table">
+                    <thead><tr><th>متد</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>bot.run()</code></td><td>اجرای بات (Polling)</td></tr>
+                        <tr><td><code>send_message(chat_id, text, keypad=None, inline_keypad=None, reply_to=None, metadata=None, parse_mode=None)</code></td><td>ارسال پیام</td></tr>
+                        <tr><td><code>edit_message(chat_id, message_id, text, inline_keypad=None, metadata=None, parse_mode=None)</code></td><td>ویرایش پیام</td></tr>
+                        <tr><td><code>delete_message(chat_id, message_id)</code></td><td>حذف پیام</td></tr>
+                        <tr><td><code>send_poll(chat_id, question, options)</code></td><td>ارسال نظرسنجی</td></tr>
+                        <tr><td><code>send_file(chat_id, file_id, text="", keypad=None, inline_keypad=None, reply_to=None)</code></td><td>ارسال فایل با file_id</td></tr>
+                        <tr><td><code>send_contact(chat_id, first_name, phone_number, last_name="")</code></td><td>ارسال مخاطب</td></tr>
+                        <tr><td><code>send_location(chat_id, latitude, longitude)</code></td><td>ارسال موقعیت مکانی</td></tr>
+                        <tr><td><code>forward_message(from_chat_id, to_chat_id, message_id)</code></td><td>فوروارد پیام</td></tr>
+                        <tr><td><code>get_chat(chat_id)</code></td><td>دریافت اطلاعات چت</td></tr>
+                        <tr><td><code>get_me()</code></td><td>دریافت اطلاعات بات</td></tr>
+                        <tr><td><code>get_updates(limit=10)</code></td><td>دریافت آپدیت ها</td></tr>
+                        <tr><td><code>poll_updates(limit=10, sleep=1)</code></td><td>دریافت پیوسته آپدیت ها</td></tr>
+                        <tr><td><code>remove_keypad(chat_id)</code></td><td>حذف Chat Keypad</td></tr>
+                        <tr><td><code>edit_chat_keypad(chat_id, keypad)</code></td><td>ویرایش Chat Keypad</td></tr>
+                        <tr><td><code>set_commands(commands)</code></td><td>تنظیم دستورات</td></tr>
+                        <tr><td><code>delete_commands()</code></td><td>حذف همه دستورات</td></tr>
+                        <tr><td><code>set_webhook(url, host, port)</code></td><td>تنظیم وب هوک</td></tr>
+                        <tr><td><code>delete_webhook()</code></td><td>حذف وب هوک</td></tr>
+                        <tr><td><code>get_webhook_info()</code></td><td>وضعیت وب هوک</td></tr>
+                        <tr><td><code>ban_user(user_id)</code></td><td>بن کردن کاربر</td></tr>
+                        <tr><td><code>unban_user(user_id)</code></td><td>رفع بن کاربر</td></tr>
+                        <tr><td><code>ban_chat_member(chat_id, user_id)</code></td><td>بن کاربر در گروه</td></tr>
+                        <tr><td><code>unban_chat_member(chat_id, user_id)</code></td><td>آنبن کاربر در گروه</td></tr>
+                        <tr><td><code>add_filter_word(word)</code></td><td>اضافه کردن کلمه فیلتر</td></tr>
+                        <tr><td><code>remove_filter_word(word)</code></td><td>حذف کلمه فیلتر</td></tr>
+                        <tr><td><code>set_auto_delete(rules)</code></td><td>تنظیم حذف خودکار</td></tr>
+                        <tr><td><code>add_middleware(func)</code></td><td>اضافه کردن middleware</td></tr>
+                        <tr><td><code>include_router(router)</code></td><td>اضافه کردن router</td></tr>
+                        <tr><td><code>command(name, pattern=None)</code></td><td>هندلر دستور</td></tr>
+                        <tr><td><code>on_message(pattern=None)</code></td><td>هندلر پیام</td></tr>
+                        <tr><td><code>on_button(button_id)</code></td><td>هندلر دکمه</td></tr>
+                    </tbody>
+                </table>
+
+                <h1 id="all_classes">📋 کلاس ها</h1>
+                <div class="grid">
+                    <div class="card"><h4>Rubkey</h4><p>کلاس اصلی (Sync)</p></div>
+                    <div class="card"><h4>AsyncBot</h4><p>کلاس اصلی (Async)</p></div>
+                    <div class="card"><h4>Message</h4><p>شیء پیام</p></div>
+                    <div class="card"><h4>Keypad</h4><p>Chat Keypad</p></div>
+                    <div class="card"><h4>KeyButton</h4><p>دکمه Chat Keypad</p></div>
+                    <div class="card"><h4>InlineKeypad</h4><p>Inline Keypad</p></div>
+                    <div class="card"><h4>InlineButton</h4><p>دکمه Inline Keypad</p></div>
+                    <div class="card"><h4>TextboxButton</h4><p>دکمه Textbox</p></div>
+                    <div class="card"><h4>FileButton</h4><p>دکمه انتخاب فایل</p></div>
+                    <div class="card"><h4>BarcodeButton</h4><p>دکمه اسکن بارکد</p></div>
+                    <div class="card"><h4>SendCodeButton</h4><p>دکمه ارسال کد تایید</p></div>
+                    <div class="card"><h4>CalendarButton</h4><p>اینلاین تقویم</p></div>
+                    <div class="card"><h4>SendFile</h4><p>ارسال و آپلود فایل</p></div>
+                    <div class="card"><h4>AsyncSendFile</h4><p>ارسال فایل async</p></div>
+                    <div class="card"><h4>SelfBot</h4><p>سلف بات</p></div>
+                    <div class="card"><h4>AsyncGroupBot</h4><p>بات گروه async</p></div>
+                    <div class="card"><h4>AsyncChannelBot</h4><p>بات کانال async</p></div>
+                    <div class="card"><h4>AsyncWebhookServer</h4><p>وب هوک async</p></div>
+                    <div class="card"><h4>Database</h4><p>پایگاه داده SQLite</p></div>
+                    <div class="card"><h4>Session</h4><p>ذخیره سازی موقت</p></div>
+                    <div class="card"><h4>SelectionButton</h4><p>اینلاین لیست انتخابی</p></div>
+                    <div class="card"><h4>NumberPickerButton</h4><p>اینلاین انتخاب عدد</p></div>
+                    <div class="card"><h4>StringPickerButton</h4><p>اینلاین انتخاب رشته</p></div>
+                    <div class="card"><h4>LinkButton</h4><p>اینلاین لینک</p></div>
+                    <div class="card"><h4>BarcodeInlineButton</h4><p>اینلاین بارکد</p></div>
+                    <div class="card"><h4>TextboxInlineButton</h4><p>اینلاین Textbox</p></div>
+                    <div class="card"><h4>Filters</h4><p>فیلترها</p></div>
+                    <div class="card"><h4>MiddlewareManager</h4><p>مدیریت middleware</p></div>
+                    <div class="card"><h4>Router</h4><p>مسیریاب</p></div>
+                    <div class="card"><h4>Metadata</h4><p>متادیتا</p></div>
+                    <div class="card"><h4>MetadataPart</h4><p>بخش متادیتا</p></div>
+                    <div class="card"><h4>GroupBot</h4><p>بات گروه</p></div>
+                    <div class="card"><h4>ChannelBot</h4><p>بات کانال</p></div>
+                    <div class="card"><h4>Plugin</h4><p>پلاگین</p></div>
+                </div>
+
+                <h1 id="all_variables">🔧 متغیرها</h1>
+                <h3>متغیرهای Bot</h3>
+                <table class="method-table">
+                    <thead><tr><th>متغیر</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>bot.total_users</code></td><td>تعداد کل کاربران</td></tr>
+                        <tr><td><code>bot.user_ids</code></td><td>مجموعه شناسه کاربران</td></tr>
+                        <tr><td><code>bot.banned_users</code></td><td>کاربران بن شده</td></tr>
+                        <tr><td><code>bot.ADMIN_ID</code></td><td>شناسه ادمین</td></tr>
+                        <tr><td><code>bot.ADMIN_PASSWORD</code></td><td>رمز ادمین</td></tr>
+                        <tr><td><code>bot.message_map</code></td><td>نگاشت message_id به sender_id</td></tr>
+                        <tr><td><code>bot.filter_words</code></td><td>کلمات فیلتر</td></tr>
+                    </tbody>
+                </table>
+                <h3>متغیرهای Message</h3>
+                <table class="method-table">
+                    <thead><tr><th>متغیر</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>msg.text</code></td><td>متن پیام</td></tr>
+                        <tr><td><code>msg.chat_id</code></td><td>شناسه چت (b=پیوی, g=گروه, c=کانال)</td></tr>
+                        <tr><td><code>msg.message_id</code></td><td>شناسه پیام</td></tr>
+                        <tr><td><code>msg.sender_id</code></td><td>شناسه فرستنده</td></tr>
+                        <tr><td><code>msg.button_id</code></td><td>شناسه دکمه کلیک شده</td></tr>
+                        <tr><td><code>msg.file</code></td><td>اطلاعات فایل (file_name, size, file_id)</td></tr>
+                        <tr><td><code>msg.contact</code></td><td>اطلاعات تماس</td></tr>
+                        <tr><td><code>msg.reply_to_message_id</code></td><td>شناسه پیام ریپلای شده</td></tr>
+                        <tr><td><code>msg.is_edited</code></td><td>وضعیت ویرایش</td></tr>
+                    </tbody>
+                </table>
+
+                <h1 id="keyboard">🎛️ کیپدها</h1>
+                <h3>Chat Keypad (کیپد معمولی)</h3>
+                <pre><code><span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> Rubkey, Keypad, KeyButton
+
+bot = Rubkey(token=<span style="color: #2fb170;">"TOKEN"</span>)
+
+keypad = Keypad(resize=<span style="color: #c973d9;">True</span>, one_time=<span style="color: #c973d9;">False</span>)
+keypad.add_row(
+    KeyButton(<span style="color: #2fb170;">"btn1"</span>, <span style="color: #2fb170;">"راهنما"</span>),
+    KeyButton(<span style="color: #2fb170;">"btn2"</span>, <span style="color: #2fb170;">"درباره"</span>)
+)
+keypad.add_row(KeyButton(<span style="color: #2fb170;">"btn3"</span>, <span style="color: #2fb170;">"تماس"</span>, button_type=<span style="color: #2fb170;">"AskMyPhoneNumber"</span>))
+
+<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"start"</span>)
+<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start</span>(msg):
+    msg.reply(<span style="color: #2fb170;">"خوش آمدید"</span>, keypad=keypad)
+
+<span style="color: #c973d9;">@bot.on_button</span>(<span style="color: #2fb170;">"btn1"</span>)
+<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">btn1</span>(msg):
+    msg.reply(<span style="color: #2fb170;">"راهنما"</span>)
+
+<span style="color: #c973d9;">@bot.on_button</span>(<span style="color: #2fb170;">"btn2"</span>)
+<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">btn2</span>(msg):
+    msg.reply(<span style="color: #2fb170;">"درباره"</span>)
+
+bot.run()</code></pre>
+
+                <div class="admonition">
+                    <div class="admonition-title">📌 نکته: Inline Keypad فقط با Webhook</div>
+                    <p>InlineKeypad فقط با Webhook کار میکنه. با Polling callback دریافت نمیشه.</p>
+                </div>
+
+                <h1 id="sendfile">📁 ارسال فایل (SendFile)</h1>
+                <pre><code><span style="color: #6791e0;">import</span> asyncio
+<span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> AsyncBot
+<span style="color: #6791e0;">from</span> rubkey.async_rubkey <span style="color: #6791e0;">import</span> AsyncSendFile
+
+bot = AsyncBot(token=<span style="color: #2fb170;">"TOKEN"</span>)
+
+<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"send"</span>)
+<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">send</span>(msg):
+    sendfile = AsyncSendFile(bot)
+    result = <span style="color: #c973d9;">await</span> sendfile.request_send_file(<span style="color: #2fb170;">"Image"</span>)
+    upload_url = result[<span style="color: #2fb170;">"upload_url"</span>]
+    upload_result = <span style="color: #c973d9;">await</span> sendfile.upload_file(upload_url, <span style="color: #2fb170;">"/path/to/file.png"</span>)
+    file_id = upload_result[<span style="color: #2fb170;">"data"</span>][<span style="color: #2fb170;">"file_id"</span>]
+    <span style="color: #c973d9;">await</span> sendfile.send_file(msg.chat_id, file_id, <span style="color: #2fb170;">"عکس شما"</span>)
+
+<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">main</span>():
+    <span style="color: #c973d9;">await</span> bot.run()
+
+asyncio.run(main())</code></pre>
+
+                <h1 id="webhook">🌐 Webhook</h1>
+                <pre><code><span style="color: #6791e0;">import</span> asyncio
+<span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> AsyncBot
+
+bot = AsyncBot(token=<span style="color: #2fb170;">"TOKEN"</span>)
+
+<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"start"</span>)
+<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start</span>(msg):
+    <span style="color: #c973d9;">await</span> msg.reply(<span style="color: #2fb170;">"سلام"</span>)
+
+<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">main</span>():
+    <span style="color: #c973d9;">await</span> bot.set_webhook(<span style="color: #2fb170;">"https://your-server.com/webhook"</span>, host=<span style="color: #2fb170;">"0.0.0.0"</span>, port=5000)
+    <span style="color: #c973d9;">await</span> bot.run()
+
+asyncio.run(main())</code></pre>
+
+                <h1 id="ban">🚫 بن و آنبن در گروه</h1>
+                <pre><code><span style="color: #6791e0;">import</span> asyncio
+<span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> AsyncBot
+
+bot = AsyncBot(token=<span style="color: #2fb170;">"TOKEN"</span>)
+
+<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"ban"</span>)
+<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">ban</span>(msg):
+    <span style="color: #6791e0;">if</span> <span style="color: #6791e0;">not</span> msg.chat_id.startswith(<span style="color: #2fb170;">"g"</span>):
+        <span style="color: #6791e0;">return</span>
+    target = bot.message_map.get(msg.reply_to_message_id)
+    <span style="color: #6791e0;">if</span> target:
+        <span style="color: #c973d9;">await</span> bot.ban_chat_member(msg.chat_id, target)
+        <span style="color: #c973d9;">await</span> msg.reply(<span style="color: #2fb170;">"کاربر بن شد"</span>)
+
+<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"unban"</span>)
+<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">unban</span>(msg):
+    <span style="color: #6791e0;">if</span> <span style="color: #6791e0;">not</span> msg.chat_id.startswith(<span style="color: #2fb170;">"g"</span>):
+        <span style="color: #6791e0;">return</span>
+    target = bot.message_map.get(msg.reply_to_message_id)
+    <span style="color: #6791e0;">if</span> target:
+        <span style="color: #c973d9;">await</span> bot.unban_chat_member(msg.chat_id, target)
+        <span style="color: #c973d9;">await</span> msg.reply(<span style="color: #2fb170;">"کاربر آنبن شد"</span>)
+
+<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">main</span>():
+    <span style="color: #c973d9;">await</span> bot.run()
+
+asyncio.run(main())</code></pre>
+
+                <h1 id="filters">🔍 فیلترها</h1>
+                <pre><code><span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> Rubkey, Filters
+
+bot = Rubkey(token=<span style="color: #2fb170;">"TOKEN"</span>)
+
+<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"start"</span>)
+<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start</span>(msg):
+    msg.reply(<span style="color: #2fb170;">"سلام"</span>)
+
+<span style="color: #c973d9;">@bot.on_message</span>()
+<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">echo</span>(msg):
+    <span style="color: #6791e0;">if</span> msg.chat_id.startswith(<span style="color: #2fb170;">"b"</span>) <span style="color: #6791e0;">and</span> msg.text <span style="color: #6791e0;">and</span> <span style="color: #6791e0;">not</span> msg.text.startswith(<span style="color: #2fb170;">"/"</span>):
+        msg.reply(msg.text)
+
+bot.run()</code></pre>
+                <div class="admonition">
+                    <div class="admonition-title">📌 فیلترهای موجود</div>
+                    <ul>
+                        <li><code>Filters.chat_type("private")</code> - فیلتر پیوی</li>
+                        <li><code>Filters.chat_type("group")</code> - فیلتر گروه</li>
+                        <li><code>Filters.text("متن")</code> - فیلتر متن دقیق</li>
+                        <li><code>Filters.regex(r"...")</code> - فیلتر regex</li>
+                        <li><code>Filters.has_file()</code> - فیلتر وجود فایل</li>
+                    </ul>
+                </div>
+
+                <h1 id="async-section">⚡ AsyncBot</h1>
+                <pre><code><span style="color: #6791e0;">import</span> asyncio
+<span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> AsyncBot, Keypad, KeyButton
+
+bot = AsyncBot(token=<span style="color: #2fb170;">"TOKEN"</span>)
+
+phone_keypad = Keypad(one_time=<span style="color: #c973d9;">True</span>).add_row(
+    KeyButton(<span style="color: #2fb170;">"send_phone"</span>, <span style="color: #2fb170;">"اشتراک تلفن"</span>, button_type=<span style="color: #2fb170;">"AskMyPhoneNumber"</span>)
+)
+
+<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"start"</span>)
+<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start</span>(msg):
+    <span style="color: #c973d9;">await</span> msg.reply(<span style="color: #2fb170;">"سلام"</span>, keypad=phone_keypad)
+
+<span style="color: #c973d9;">@bot.on_button</span>(<span style="color: #2fb170;">"send_phone"</span>)
+<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">get_phone</span>(msg):
+    <span style="color: #c973d9;">await</span> msg.reply(<span style="color: #2fb170;">f"شماره: {msg.text}"</span>)
+
+<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">main</span>():
+    <span style="color: #c973d9;">await</span> bot.run()
+
+asyncio.run(main())</code></pre>
+
+                <h1 id="selfbot">🤖 SelfBot</h1>
+                <p>سلف بات با اکانت شخصی. فقط پیوی پشتیبانی میشود.</p>
+                <pre><code><span style="color: #6791e0;">from</span> rubkey.selfbot <span style="color: #6791e0;">import</span> SelfBot
+
+bot = SelfBot()
+
+<span style="color: #c973d9;">@bot.on_command</span>(<span style="color: #2fb170;">"start"</span>, slash=<span style="color: #c973d9;">True</span>)
+<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start_cmd</span>(msg):
+    msg.reply(<span style="color: #2fb170;">"سلام"</span>)
+
+<span style="color: #c973d9;">@bot.on_command</span>(<span style="color: #2fb170;">"salam"</span>, slash=<span style="color: #c973d9;">False</span>)
+<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">salam_cmd</span>(msg):
+    msg.reply(<span style="color: #2fb170;">"خوبی"</span>)
+
+bot.run()</code></pre>
+                <p><strong>متدهای SelfBot:</strong> <code>bot.run()</code>, <code>bot.send_message(chat_id, text)</code>, <code>bot.edit_message(chat_id, msg_id, text)</code>, <code>@bot.on_command("text", slash=True/False)</code>, <code>@bot.on_message()</code>, <code>msg.reply(text)</code>, <code>msg.edit(text)</code>, <code>msg.text</code>, <code>msg.chat_id</code>, <code>msg.message_id</code>, <code>msg.sender_id</code></p>
+
+                <h1 id="sendcode">📱 SendCodeButton</h1>
+                <p>دکمه تکست باکس با کیبورد عددی برای ارسال کد تایید.</p>
+                <pre><code><span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> Rubkey, Keypad
+<span style="color: #6791e0;">from</span> rubkey.selfbot <span style="color: #6791e0;">import</span> SendCodeButton
+
+bot = Rubkey(token=<span style="color: #2fb170;">"TOKEN"</span>)
+send_code_btn = SendCodeButton(<span style="color: #2fb170;">"send_code"</span>, <span style="color: #2fb170;">"ارسال کد"</span>, place_holder=<span style="color: #2fb170;">"شماره..."</span>, title=<span style="color: #2fb170;">"شماره تلفن"</span>)
+
+<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"start"</span>)
+<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start</span>(msg):
+    keypad = Keypad().add_row(send_code_btn)
+    msg.reply(<span style="color: #2fb170;">"شماره تلفن:"</span>, keypad=keypad)
+
+<span style="color: #c973d9;">@bot.on_button</span>(<span style="color: #2fb170;">"send_code"</span>)
+<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">send_code</span>(msg):
+    send_code_btn.handle(bot, msg.chat_id, msg.text)
+
+bot.run()</code></pre>
+
+                <h1 id="metadata"></h1>
+
+                <h1 id="middleware">🔗 Middleware و Router</h1>
+                <pre><code><span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> Rubkey, Router
+
+bot = Rubkey(token=<span style="color: #2fb170;">"TOKEN"</span>)
+
+<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">log_middleware</span>(msg, bot):
+    <span style="color: #6791e0;">print</span>(<span style="color: #2fb170;">f"پیام از {msg.sender_id}"</span>)
+    <span style="color: #6791e0;">return</span> msg
+
+bot.add_middleware(log_middleware)
+
+router = Router()
+
+<span style="color: #c973d9;">@router.command</span>(<span style="color: #2fb170;">"test"</span>)
+<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">test</span>(msg):
+    msg.reply(<span style="color: #2fb170;">"Router"</span>)
+
+bot.include_router(router)
+
+<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"start"</span>)
+<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start</span>(msg):
+    msg.reply(<span style="color: #2fb170;">"سلام"</span>)
+
+bot.run()</code></pre>
+
+                <h1 id="session">💾 Session و Database</h1>
+                <pre><code><span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> Rubkey, Session
+
+bot = Rubkey(token=<span style="color: #2fb170;">"TOKEN"</span>)
+session = Session(<span style="color: #2fb170;">"user_data.json"</span>)
+
+<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"save"</span>)
+<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">save</span>(msg):
+    session.set(msg.sender_id, <span style="color: #2fb170;">"name"</span>, <span style="color: #2fb170;">"تست"</span>)
+    msg.reply(<span style="color: #2fb170;">"ذخیره شد"</span>)
+
+<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"load"</span>)
+<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">load</span>(msg):
+    name = session.get(msg.sender_id, <span style="color: #2fb170;">"name"</span>, <span style="color: #2fb170;">"ناشناس"</span>)
+    msg.reply(<span style="color: #2fb170;">f"نام: {name}"</span>)
+
+bot.run()</code></pre>
+
+                <h1 id="groupbot">👥 GroupBot</h1>
+                <pre><code><span style="color: #6791e0;">import</span> asyncio
+<span style="color: #6791e0;">from</span> rubkey.async_rubkey <span style="color: #6791e0;">import</span> AsyncGroupBot
+<span style="color: #6791e0;">from</span> rubkey.groupbot <span style="color: #6791e0;">import</span> GroupHandlers
+
+bot = AsyncGroupBot(token=<span style="color: #2fb170;">"TOKEN"</span>)
+handlers = GroupHandlers()
+
+<span style="color: #c973d9;">@handlers.command</span>(<span style="color: #2fb170;">"start"</span>, group_only=<span style="color: #c973d9;">True</span>)
+<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start</span>(msg, group_info):
+    <span style="color: #c973d9;">await</span> msg.reply(<span style="color: #2fb170;">f"گروه {group_info['title']}"</span>)
+
+bot.set_group_handlers(handlers)
+
+<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">main</span>():
+    <span style="color: #c973d9;">await</span> bot.run()
+
+asyncio.run(main())</code></pre>
+
+                <h1 id="channelbot">📢 ChannelBot</h1>
+                <pre><code><span style="color: #6791e0;">import</span> asyncio
+<span style="color: #6791e0;">from</span> rubkey.async_rubkey <span style="color: #6791e0;">import</span> AsyncChannelBot
+
+bot = AsyncChannelBot(token=<span style="color: #2fb170;">"TOKEN"</span>)
+
+<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"start"</span>)
+<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start</span>(msg):
+    info = <span style="color: #c973d9;">await</span> bot.get_channel_info(msg.chat_id)
+    <span style="color: #c973d9;">await</span> msg.reply(<span style="color: #2fb170;">f"کانال: {info['title']}"</span>)
+
+<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">main</span>():
+    <span style="color: #c973d9;">await</span> bot.run()
+
+asyncio.run(main())</code></pre>
+
+                <h1 id="examples">📝 مثال های کامل</h1>
+
+                <h3>ربات نظرسنجی در گروه</h3>
+                <pre><code><span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> Rubkey
+
+bot = Rubkey(token=<span style="color: #2fb170;">"TOKEN"</span>)
+
+<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"poll"</span>)
+<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">poll</span>(msg):
+    <span style="color: #6791e0;">if</span> msg.chat_id.startswith(<span style="color: #2fb170;">"g"</span>):
+        bot.send_poll(msg.chat_id, <span style="color: #2fb170;">"کدوم بهتره"</span>, [<span style="color: #2fb170;">"Python"</span>, <span style="color: #2fb170;">"JavaScript"</span>])
+
+bot.run()</code></pre>
+
+                <hr>
+                <div class="admonition">
+                    <div class="admonition-title">📬 ارتباط با توسعه دهنده</div>
+                    <p><strong>نویسنده:</strong> طاها انصاریان پور</p>
+                    <p><strong>ایمیل:</strong> codetansarian@gmail.com</p>
+                    <p><strong>کانال روبیکا:</strong> <a href="https://rubika.ir/library_rubkey">@library_rubkey</a></p>
+                    <p><strong>لایسنس:</strong> MIT | <strong>نسخه:</strong> 2.0.7 | <strong>Python:</strong> >=3.8</p>
+                </div>
+            </article>
+        </main>
+    </div>
+    <script>
+        document.querySelectorAll('.md-nav__link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                document.querySelectorAll('.md-nav__link').forEach(l => l.classList.remove('md-nav__link--active'));
+                this.classList.add('md-nav__link--active');
+            });
+        });
+        if (window.location.hash) {
+            const target = document.querySelector(window.location.hash);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+                target.style.backgroundColor = 'var(--md-accent-fg-color--transparent)';
+                setTimeout(() => { target.style.backgroundColor = ''; }, 2000);
+            }
+        }
+        const termynals = document.querySelectorAll('.termynal');
+        termynals.forEach(terminal => {
+            const lines = terminal.querySelectorAll('[data-ty]');
+            let index = 0;
+            function showNext() {
+                if (index < lines.length) {
+                    lines[index].style.opacity = '1';
+                    lines[index].style.display = 'block';
+                    index++;
+                    setTimeout(showNext, 500);
+                }
+            }
+            lines.forEach(line => { line.style.opacity = '0'; line.style.display = 'none'; });
+            showNext();
+        });
+        const toggleBtn = document.getElementById('color-palette-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
+        function setTheme(scheme) {
+            body.setAttribute('data-md-color-scheme', scheme);
+            localStorage.setItem('md-color-scheme', scheme);
+            themeIcon.innerHTML = scheme === 'slate' ? 
+                '<path d="M12 3a9 9 0 0 0 9 9c0 .46-.04.92-.1 1.36a7.5 7.5 0 0 1-8.26 8.26A9 9 0 0 1 12 3z"/>' :
+                '<path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/>';
+        }
+        setTheme(localStorage.getItem('md-color-scheme') || 'slate');
+        toggleBtn.addEventListener('click', () => setTheme(body.getAttribute('data-md-color-scheme') === 'slate' ? 'default' : 'slate'));
+        document.querySelectorAll('pre').forEach(pre => {
+            if (!pre.querySelector('.md-clipboard')) {
+                const btn = document.createElement('button');
+                btn.className = 'md-clipboard';
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 21H8V7h11m0-2H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2m-3-4H4a2 2 0 0 0-2 2v14h2V3h12z"/></svg>';
+                pre.style.position = 'relative';
+                pre.appendChild(btn);
+                btn.addEventListener('click', async () => {
+                    const code = pre.querySelector('code');
+                    const text = code ? code.innerText : pre.innerText;
+                    try {
+                        await navigator.clipboard.writeText(text);
+                        const toast = document.getElementById('toast');
+                        toast.classList.add('show');
+                        setTimeout(() => toast.classList.remove('show'), 2000);
+                    } catch (err) {}
+                });
+            }
+        });
+    </script>
+</body>
+</html>
