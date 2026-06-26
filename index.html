@@ -313,7 +313,7 @@
     <header class="md-header">
         <div class="md-header__inner">
             <div class="md-header__title">
-                <div class="md-header__topic">مستندات Rubkey v2.0.7.1</div>
+                <div class="md-header__topic">مستندات Rubkey v2.0.8</div>
             </div>
             <div class="md-header__option">
                 <button class="md-header__button" id="color-palette-toggle" aria-label="تغییر حالت روز/شب">
@@ -332,24 +332,26 @@
                     <li class="md-nav__item"><a href="#intro" class="md-nav__link">✨ معرفی</a></li>
                     <li class="md-nav__item"><a href="#install" class="md-nav__link">🧰 نصب</a></li>
                     <li class="md-nav__item"><a href="#quickstart" class="md-nav__link">🍀 شروع سریع</a></li>
-                    <li class="md-nav__item"><a href="#sync-async" class="md-nav__link">⚡ Sync vs Async</a></li>
                     <li class="md-nav__item"><a href="#imports" class="md-nav__link">📦 ایمپورت ها</a></li>
                     <li class="md-nav__item"><a href="#all_methods" class="md-nav__link">⚙️ متدها</a></li>
                     <li class="md-nav__item"><a href="#all_classes" class="md-nav__link">📋 کلاس ها</a></li>
                     <li class="md-nav__item"><a href="#all_variables" class="md-nav__link">🔧 متغیرها</a></li>
-                    <li class="md-nav__item"><a href="#keyboard" class="md-nav__link">🎛️ کیپدها</a></li>
-                    <li class="md-nav__item"><a href="#sendfile" class="md-nav__link">📁 ارسال فایل</a></li>
-                    <li class="md-nav__item"><a href="#webhook" class="md-nav__link">🌐 Webhook</a></li>
+                    <li class="md-nav__item"><a href="#admin" class="md-nav__link">👑 سیستم ادمین</a></li>
                     <li class="md-nav__item"><a href="#ban" class="md-nav__link">🚫 بن و آنبن</a></li>
+                    <li class="md-nav__item"><a href="#keyboard" class="md-nav__link">🎛️ کیپدها</a></li>
+                    <li class="md-nav__item"><a href="#markdown-section" class="md-nav__link">📝 Markdown</a></li>
+                    <li class="md-nav__item"><a href="#metadata-section" class="md-nav__link">🏷️ Metadata</a></li>
                     <li class="md-nav__item"><a href="#filters" class="md-nav__link">🔍 فیلترها</a></li>
+                    <li class="md-nav__item"><a href="#middleware" class="md-nav__link">🔗 Middleware و Router</a></li>
+                    <li class="md-nav__item"><a href="#session" class="md-nav__link">💾 Session و Database</a></li>
+                    <li class="md-nav__item"><a href="#webhook" class="md-nav__link">🌐 Webhook</a></li>
+                    <li class="md-nav__item"><a href="#groupbot" class="md-nav__link">👥 GroupBot</a></li>
+                    <li class="md-nav__item"><a href="#channelbot" class="md-nav__link">📢 ChannelBot</a></li>
+                    <li class="md-nav__item"><a href="#plugin-section" class="md-nav__link">🧩 Plugin</a></li>
+                    <li class="md-nav__item"><a href="#sendfile-section" class="md-nav__link">📁 SendFile</a></li>
                     <li class="md-nav__item"><a href="#async-section" class="md-nav__link">⚡ Async</a></li>
                     <li class="md-nav__item"><a href="#selfbot" class="md-nav__link">🤖 SelfBot</a></li>
                     <li class="md-nav__item"><a href="#sendcode" class="md-nav__link">📱 SendCodeButton</a></li>
-                    <li class="md-nav__item"><a href="#metadata" class="md-nav__link"></a></li>
-                    <li class="md-nav__item"><a href="#middleware" class="md-nav__link">🔗 Middleware و Router</a></li>
-                    <li class="md-nav__item"><a href="#session" class="md-nav__link">💾 Session و Database</a></li>
-                    <li class="md-nav__item"><a href="#groupbot" class="md-nav__link">👥 GroupBot</a></li>
-                    <li class="md-nav__item"><a href="#channelbot" class="md-nav__link">📢 ChannelBot</a></li>
                     <li class="md-nav__item"><a href="#examples" class="md-nav__link">📝 مثال ها</a></li>
                 </ul>
             </nav>
@@ -372,14 +374,7 @@
                 <h1 id="install">🧰 نصب و راه اندازی</h1>
                 <div class="termynal"><div data-ty="input">pip install rubkey</div></div>
                 <pre><code><span style="color: #6791e0;">import</span> rubkey
-<span style="color: #6791e0;">print</span>(rubkey.__version__)  <span style="color: #6e59d9;"># 2.0.7.1</span></code></pre>
-                <div class="admonition">
-                    <div class="admonition-title">📌 پیش نیازها</div>
-                    <ul>
-                        <li>Python نسخه 3.8 یا بالاتر</li>
-                        <li>توکن ربات از <a href="https://rubika.ir/BotFather">@BotFather</a></li>
-                    </ul>
-                </div>
+<span style="color: #6791e0;">print</span>(rubkey.__version__)  <span style="color: #6e59d9;"># 2.0.8</span></code></pre>
 
                 <h1 id="quickstart">🍀 شروع سریع</h1>
                 <pre><code><span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> Rubkey
@@ -391,33 +386,6 @@ bot = Rubkey(token=<span style="color: #2fb170;">"TOKEN"</span>)
     msg.reply(<span style="color: #2fb170;">"سلام"</span>)
 
 bot.run()</code></pre>
-
-                <h1 id="sync-async">⚡ تفاوت Sync و Async</h1>
-                <pre><code><span style="color: #6e59d9;"># Sync - ساده</span>
-<span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> Rubkey
-
-bot = Rubkey(token=<span style="color: #2fb170;">"TOKEN"</span>)
-
-<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"start"</span>)
-<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start</span>(msg):
-    msg.reply(<span style="color: #2fb170;">"سلام"</span>)
-
-bot.run()
-
-<span style="color: #6e59d9;"># Async - سریعتر</span>
-<span style="color: #6791e0;">import</span> asyncio
-<span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> AsyncBot
-
-bot = AsyncBot(token=<span style="color: #2fb170;">"TOKEN"</span>)
-
-<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"start"</span>)
-<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start</span>(msg):
-    <span style="color: #c973d9;">await</span> msg.reply(<span style="color: #2fb170;">"سلام"</span>)
-
-<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">main</span>():
-    <span style="color: #c973d9;">await</span> bot.run()
-
-asyncio.run(main())</code></pre>
 
                 <h1 id="imports">📦 ایمپورت ها</h1>
                 <pre><code><span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> Rubkey, Message, Keypad, KeyButton, InlineKeypad, InlineButton
@@ -438,7 +406,7 @@ asyncio.run(main())</code></pre>
                 <table class="method-table">
                     <thead><tr><th>متد</th><th>توضیح</th></tr></thead>
                     <tbody>
-                        <tr><td><code>bot.run()</code></td><td>اجرای بات (Polling)</td></tr>
+                        <tr><td><code>bot.run()</code></td><td>اجرای بات</td></tr>
                         <tr><td><code>send_message(chat_id, text, keypad=None, inline_keypad=None, reply_to=None, metadata=None, parse_mode=None)</code></td><td>ارسال پیام</td></tr>
                         <tr><td><code>edit_message(chat_id, message_id, text, inline_keypad=None, metadata=None, parse_mode=None)</code></td><td>ویرایش پیام</td></tr>
                         <tr><td><code>delete_message(chat_id, message_id)</code></td><td>حذف پیام</td></tr>
@@ -460,8 +428,12 @@ asyncio.run(main())</code></pre>
                         <tr><td><code>get_webhook_info()</code></td><td>وضعیت وب هوک</td></tr>
                         <tr><td><code>ban_user(user_id)</code></td><td>بن کردن کاربر</td></tr>
                         <tr><td><code>unban_user(user_id)</code></td><td>رفع بن کاربر</td></tr>
+                        <tr><td><code>admin_ban(msg, user_id)</code></td><td>بن کاربر توسط ادمین</td></tr>
                         <tr><td><code>ban_chat_member(chat_id, user_id)</code></td><td>بن کاربر در گروه</td></tr>
                         <tr><td><code>unban_chat_member(chat_id, user_id)</code></td><td>آنبن کاربر در گروه</td></tr>
+                        <tr><td><code>set_rate_limit(max_per_second=5, window=1)</code></td><td>تنظیم محدودیت نرخ</td></tr>
+                        <tr><td><code>set_cache_ttl(ttl)</code></td><td>تنظیم زمان کش</td></tr>
+                        <tr><td><code>get_analytics(user_id=None)</code></td><td>دریافت آمار کاربران</td></tr>
                         <tr><td><code>add_filter_word(word)</code></td><td>اضافه کردن کلمه فیلتر</td></tr>
                         <tr><td><code>remove_filter_word(word)</code></td><td>حذف کلمه فیلتر</td></tr>
                         <tr><td><code>set_auto_delete(rules)</code></td><td>تنظیم حذف خودکار</td></tr>
@@ -470,6 +442,9 @@ asyncio.run(main())</code></pre>
                         <tr><td><code>command(name, pattern=None)</code></td><td>هندلر دستور</td></tr>
                         <tr><td><code>on_message(pattern=None)</code></td><td>هندلر پیام</td></tr>
                         <tr><td><code>on_button(button_id)</code></td><td>هندلر دکمه</td></tr>
+                        <tr><td><code>admin_command(name)</code></td><td>دستور مخصوص ادمین</td></tr>
+                        <tr><td><code>admin_on_message()</code></td><td>هندلر پیام ادمین</td></tr>
+                        <tr><td><code>admin_on_button(button_id)</code></td><td>هندلر دکمه ادمین</td></tr>
                     </tbody>
                 </table>
 
@@ -506,9 +481,14 @@ asyncio.run(main())</code></pre>
                     <div class="card"><h4>Router</h4><p>مسیریاب</p></div>
                     <div class="card"><h4>Metadata</h4><p>متادیتا</p></div>
                     <div class="card"><h4>MetadataPart</h4><p>بخش متادیتا</p></div>
+                    <div class="card"><h4>MarkdownParser</h4><p>پارسر Markdown</p></div>
                     <div class="card"><h4>GroupBot</h4><p>بات گروه</p></div>
+                    <div class="card"><h4>GroupHandlers</h4><p>هندلرهای گروه</p></div>
                     <div class="card"><h4>ChannelBot</h4><p>بات کانال</p></div>
+                    <div class="card"><h4>ChannelHandlers</h4><p>هندلرهای کانال</p></div>
+                    <div class="card"><h4>PluginLoader</h4><p>لودر پلاگین</p></div>
                     <div class="card"><h4>Plugin</h4><p>پلاگین</p></div>
+                    <div class="card"><h4>PluginInfo</h4><p>اطلاعات پلاگین</p></div>
                 </div>
 
                 <h1 id="all_variables">🔧 متغیرها</h1>
@@ -523,6 +503,19 @@ asyncio.run(main())</code></pre>
                         <tr><td><code>bot.ADMIN_PASSWORD</code></td><td>رمز ادمین</td></tr>
                         <tr><td><code>bot.message_map</code></td><td>نگاشت message_id به sender_id</td></tr>
                         <tr><td><code>bot.filter_words</code></td><td>کلمات فیلتر</td></tr>
+                        <tr><td><code>bot.auto_delete_rules</code></td><td>قوانین حذف خودکار</td></tr>
+                        <tr><td><code>bot.admins_can_bypass_delete</code></td><td>معافیت ادمین از حذف خودکار</td></tr>
+                        <tr><td><code>bot.admin_only_ban</code></td><td>فقط ادمین بن کند</td></tr>
+                    </tbody>
+                </table>
+                <h3>متغیرهای GroupBot</h3>
+                <table class="method-table">
+                    <thead><tr><th>متغیر</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>bot.first_admin_on_start</code></td><td>اولین نفر ادمین شود</td></tr>
+                        <tr><td><code>bot.first_n_admins</code></td><td>تعداد ادمین های اول</td></tr>
+                        <tr><td><code>bot.no_admin_mode</code></td><td>حالت بدون ادمین</td></tr>
+                        <tr><td><code>bot.admin_only_ban</code></td><td>فقط ادمین بن کند</td></tr>
                     </tbody>
                 </table>
                 <h3>متغیرهای Message</h3>
@@ -536,108 +529,99 @@ asyncio.run(main())</code></pre>
                         <tr><td><code>msg.button_id</code></td><td>شناسه دکمه کلیک شده</td></tr>
                         <tr><td><code>msg.file</code></td><td>اطلاعات فایل (file_name, size, file_id)</td></tr>
                         <tr><td><code>msg.contact</code></td><td>اطلاعات تماس</td></tr>
+                        <tr><td><code>msg.time</code></td><td>زمان ارسال</td></tr>
+                        <tr><td><code>msg.poll</code></td><td>اطلاعات نظرسنجی</td></tr>
+                        <tr><td><code>msg.aux_data</code></td><td>داده های کمکی</td></tr>
                         <tr><td><code>msg.reply_to_message_id</code></td><td>شناسه پیام ریپلای شده</td></tr>
                         <tr><td><code>msg.is_edited</code></td><td>وضعیت ویرایش</td></tr>
                     </tbody>
                 </table>
 
+                <h1 id="admin">👑 سیستم ادمین</h1>
+                <table class="method-table">
+                    <thead><tr><th>متد</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>admin_ban(msg, user_id)</code></td><td>بن کاربر توسط ادمین</td></tr>
+                        <tr><td><code>admin_command(name)</code></td><td>دستور مخصوص ادمین</td></tr>
+                        <tr><td><code>admin_on_message()</code></td><td>هندلر پیام ادمین</td></tr>
+                        <tr><td><code>admin_on_button(button_id)</code></td><td>هندلر دکمه ادمین</td></tr>
+                    </tbody>
+                </table>
+
+                <h1 id="ban">🚫 بن و آنبن در گروه</h1>
+                <table class="method-table">
+                    <thead><tr><th>متد</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>ban_user(user_id)</code></td><td>بن کردن کاربر</td></tr>
+                        <tr><td><code>unban_user(user_id)</code></td><td>رفع بن کاربر</td></tr>
+                        <tr><td><code>ban_chat_member(chat_id, user_id)</code></td><td>بن کاربر در گروه</td></tr>
+                        <tr><td><code>unban_chat_member(chat_id, user_id)</code></td><td>آنبن کاربر در گروه</td></tr>
+                        <tr><td><code>set_rate_limit(max_per_second=5, window=1)</code></td><td>تنظیم محدودیت نرخ</td></tr>
+                        <tr><td><code>set_cache_ttl(ttl)</code></td><td>تنظیم زمان کش</td></tr>
+                        <tr><td><code>get_analytics(user_id=None)</code></td><td>دریافت آمار کاربران</td></tr>
+                        <tr><td><code>add_filter_word(word)</code></td><td>اضافه کردن کلمه فیلتر</td></tr>
+                        <tr><td><code>remove_filter_word(word)</code></td><td>حذف کلمه فیلتر</td></tr>
+                        <tr><td><code>set_auto_delete(rules)</code></td><td>تنظیم حذف خودکار</td></tr>
+                    </tbody>
+                </table>
+
                 <h1 id="keyboard">🎛️ کیپدها</h1>
                 <h3>Chat Keypad (کیپد معمولی)</h3>
-                <pre><code><span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> Rubkey, Keypad, KeyButton
-
-bot = Rubkey(token=<span style="color: #2fb170;">"TOKEN"</span>)
-
-keypad = Keypad(resize=<span style="color: #c973d9;">True</span>, one_time=<span style="color: #c973d9;">False</span>)
-keypad.add_row(
-    KeyButton(<span style="color: #2fb170;">"btn1"</span>, <span style="color: #2fb170;">"راهنما"</span>),
-    KeyButton(<span style="color: #2fb170;">"btn2"</span>, <span style="color: #2fb170;">"درباره"</span>)
-)
-keypad.add_row(KeyButton(<span style="color: #2fb170;">"btn3"</span>, <span style="color: #2fb170;">"تماس"</span>, button_type=<span style="color: #2fb170;">"AskMyPhoneNumber"</span>))
-
-<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"start"</span>)
-<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start</span>(msg):
-    msg.reply(<span style="color: #2fb170;">"خوش آمدید"</span>, keypad=keypad)
-
-<span style="color: #c973d9;">@bot.on_button</span>(<span style="color: #2fb170;">"btn1"</span>)
-<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">btn1</span>(msg):
-    msg.reply(<span style="color: #2fb170;">"راهنما"</span>)
-
-<span style="color: #c973d9;">@bot.on_button</span>(<span style="color: #2fb170;">"btn2"</span>)
-<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">btn2</span>(msg):
-    msg.reply(<span style="color: #2fb170;">"درباره"</span>)
-
-bot.run()</code></pre>
-
+                <table class="method-table">
+                    <thead><tr><th>کلاس / متد</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>Keypad(resize=True, one_time=False)</code></td><td>ساخت Chat Keypad</td></tr>
+                        <tr><td><code>keypad.add_row(*buttons)</code></td><td>اضافه کردن دکمه</td></tr>
+                        <tr><td><code>KeyButton(button_id, text, button_type="Simple")</code></td><td>ساخت دکمه</td></tr>
+                    </tbody>
+                </table>
+                <h3>Inline Keypad (کیپد شیشه ای)</h3>
+                <table class="method-table">
+                    <thead><tr><th>کلاس / متد</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>InlineKeypad()</code></td><td>ساخت Inline Keypad</td></tr>
+                        <tr><td><code>InlineButton(button_id, text, button_type="Simple")</code></td><td>دکمه Inline</td></tr>
+                        <tr><td><code>SelectionButton(...)</code></td><td>لیست انتخابی</td></tr>
+                        <tr><td><code>NumberPickerButton(...)</code></td><td>انتخاب عدد</td></tr>
+                        <tr><td><code>StringPickerButton(...)</code></td><td>انتخاب رشته</td></tr>
+                        <tr><td><code>LinkButton(...)</code></td><td>لینک</td></tr>
+                        <tr><td><code>BarcodeInlineButton(...)</code></td><td>بارکد</td></tr>
+                        <tr><td><code>TextboxInlineButton(...)</code></td><td>Textbox</td></tr>
+                        <tr><td><code>CalendarButton(...)</code></td><td>تقویم</td></tr>
+                    </tbody>
+                </table>
                 <div class="admonition">
                     <div class="admonition-title">📌 نکته: Inline Keypad فقط با Webhook</div>
                     <p>InlineKeypad فقط با Webhook کار میکنه. با Polling callback دریافت نمیشه.</p>
                 </div>
 
-                <h1 id="sendfile">📁 ارسال فایل (SendFile)</h1>
-                <pre><code><span style="color: #6791e0;">import</span> asyncio
-<span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> AsyncBot
-<span style="color: #6791e0;">from</span> rubkey.async_rubkey <span style="color: #6791e0;">import</span> AsyncSendFile
+                <h1 id="markdown-section">📝 Markdown</h1>
+                <table class="method-table">
+                    <thead><tr><th>فرمت</th><th>نتیجه</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>**text**</code></td><td>Bold</td></tr>
+                        <tr><td><code>*text*</code></td><td>Italic</td></tr>
+                        <tr><td><code>__text__</code></td><td>Underline</td></tr>
+                        <tr><td><code>~~text~~</code></td><td>Strike</td></tr>
+                        <tr><td><code>||text||</code></td><td>Spoiler</td></tr>
+                        <tr><td><code>`text`</code></td><td>Mono</td></tr>
+                        <tr><td><code>```text```</code></td><td>Pre</td></tr>
+                        <tr><td><code>&gt; text</code></td><td>Quote</td></tr>
+                        <tr><td><code>[text](url)</code></td><td>Link</td></tr>
+                    </tbody>
+                </table>
+                <p>استفاده: <code>msg.reply("**Bold**", parse_mode="Markdown")</code></p>
 
-bot = AsyncBot(token=<span style="color: #2fb170;">"TOKEN"</span>)
-
-<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"send"</span>)
-<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">send</span>(msg):
-    sendfile = AsyncSendFile(bot)
-    result = <span style="color: #c973d9;">await</span> sendfile.request_send_file(<span style="color: #2fb170;">"Image"</span>)
-    upload_url = result[<span style="color: #2fb170;">"upload_url"</span>]
-    upload_result = <span style="color: #c973d9;">await</span> sendfile.upload_file(upload_url, <span style="color: #2fb170;">"/path/to/file.png"</span>)
-    file_id = upload_result[<span style="color: #2fb170;">"data"</span>][<span style="color: #2fb170;">"file_id"</span>]
-    <span style="color: #c973d9;">await</span> sendfile.send_file(msg.chat_id, file_id, <span style="color: #2fb170;">"عکس شما"</span>)
-
-<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">main</span>():
-    <span style="color: #c973d9;">await</span> bot.run()
-
-asyncio.run(main())</code></pre>
-
-                <h1 id="webhook">🌐 Webhook</h1>
-                <pre><code><span style="color: #6791e0;">import</span> asyncio
-<span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> AsyncBot
-
-bot = AsyncBot(token=<span style="color: #2fb170;">"TOKEN"</span>)
-
-<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"start"</span>)
-<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start</span>(msg):
-    <span style="color: #c973d9;">await</span> msg.reply(<span style="color: #2fb170;">"سلام"</span>)
-
-<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">main</span>():
-    <span style="color: #c973d9;">await</span> bot.set_webhook(<span style="color: #2fb170;">"https://your-server.com/webhook"</span>, host=<span style="color: #2fb170;">"0.0.0.0"</span>, port=5000)
-    <span style="color: #c973d9;">await</span> bot.run()
-
-asyncio.run(main())</code></pre>
-
-                <h1 id="ban">🚫 بن و آنبن در گروه</h1>
-                <pre><code><span style="color: #6791e0;">import</span> asyncio
-<span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> AsyncBot
-
-bot = AsyncBot(token=<span style="color: #2fb170;">"TOKEN"</span>)
-
-<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"ban"</span>)
-<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">ban</span>(msg):
-    <span style="color: #6791e0;">if</span> <span style="color: #6791e0;">not</span> msg.chat_id.startswith(<span style="color: #2fb170;">"g"</span>):
-        <span style="color: #6791e0;">return</span>
-    target = bot.message_map.get(msg.reply_to_message_id)
-    <span style="color: #6791e0;">if</span> target:
-        <span style="color: #c973d9;">await</span> bot.ban_chat_member(msg.chat_id, target)
-        <span style="color: #c973d9;">await</span> msg.reply(<span style="color: #2fb170;">"کاربر بن شد"</span>)
-
-<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"unban"</span>)
-<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">unban</span>(msg):
-    <span style="color: #6791e0;">if</span> <span style="color: #6791e0;">not</span> msg.chat_id.startswith(<span style="color: #2fb170;">"g"</span>):
-        <span style="color: #6791e0;">return</span>
-    target = bot.message_map.get(msg.reply_to_message_id)
-    <span style="color: #6791e0;">if</span> target:
-        <span style="color: #c973d9;">await</span> bot.unban_chat_member(msg.chat_id, target)
-        <span style="color: #c973d9;">await</span> msg.reply(<span style="color: #2fb170;">"کاربر آنبن شد"</span>)
-
-<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">main</span>():
-    <span style="color: #c973d9;">await</span> bot.run()
-
-asyncio.run(main())</code></pre>
+                <h1 id="metadata-section">🏷️ Metadata</h1>
+                <table class="method-table">
+                    <thead><tr><th>کلاس / متد</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>Metadata()</code></td><td>ساخت متادیتا</td></tr>
+                        <tr><td><code>MetadataPart(type, from_index, length, **kwargs)</code></td><td>بخش متادیتا</td></tr>
+                        <tr><td><code>metadata.add_part(part)</code></td><td>اضافه کردن بخش</td></tr>
+                    </tbody>
+                </table>
+                <p><strong>انواع:</strong> Bold, Italic, Underline, Strike, Spoiler, Mono, Pre, Link, Mention, Quote</p>
 
                 <h1 id="filters">🔍 فیلترها</h1>
                 <pre><code><span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> Rubkey, Filters
@@ -662,31 +646,222 @@ bot.run()</code></pre>
                         <li><code>Filters.text("متن")</code> - فیلتر متن دقیق</li>
                         <li><code>Filters.regex(r"...")</code> - فیلتر regex</li>
                         <li><code>Filters.has_file()</code> - فیلتر وجود فایل</li>
+                        <li><code>Filters.command("name")</code> - فیلتر دستور</li>
+                        <li><code>Filters.has_contact()</code> - فیلتر مخاطب</li>
+                        <li><code>Filters.has_button("id")</code> - فیلتر دکمه</li>
+                        <li><code>Filters.is_admin()</code> - فیلتر ادمین</li>
+                        <li><code>Filters.and_filter(...)</code> / <code>or_filter(...)</code> / <code>not_filter(...)</code> - ترکیب</li>
                     </ul>
                 </div>
 
-                <h1 id="async-section">⚡ AsyncBot</h1>
+                <h1 id="middleware">🔗 Middleware و Router</h1>
+                <table class="method-table">
+                    <thead><tr><th>متد</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>bot.add_middleware(func)</code></td><td>اضافه کردن middleware</td></tr>
+                        <tr><td><code>MiddlewareManager()</code></td><td>مدیریت middleware</td></tr>
+                        <tr><td><code>Router()</code></td><td>ساخت router</td></tr>
+                        <tr><td><code>router.command("name", filters=...)</code></td><td>دستور router</td></tr>
+                        <tr><td><code>router.on_message(filters=...)</code></td><td>هندلر پیام router</td></tr>
+                        <tr><td><code>router.on_button("id", filters=...)</code></td><td>دکمه router</td></tr>
+                        <tr><td><code>bot.include_router(router)</code></td><td>اضافه کردن router</td></tr>
+                    </tbody>
+                </table>
+
+                <h1 id="session">💾 Session و Database</h1>
+                <table class="method-table">
+                    <thead><tr><th>کلاس / متد</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>Session(session_file="session.json")</code></td><td>ساخت session</td></tr>
+                        <tr><td><code>session.set(user_id, key, value)</code></td><td>ذخیره داده</td></tr>
+                        <tr><td><code>session.get(user_id, key, default=None)</code></td><td>دریافت داده</td></tr>
+                        <tr><td><code>session.delete(user_id, key=None)</code></td><td>حذف داده</td></tr>
+                        <tr><td><code>session.clear()</code></td><td>پاک کردن همه</td></tr>
+                        <tr><td><code>Database(db_path="rubkey.db")</code></td><td>پایگاه داده SQLite</td></tr>
+                        <tr><td><code>database.init()</code></td><td>راه اندازی جداول</td></tr>
+                        <tr><td><code>database.save_message(...)</code></td><td>ذخیره پیام</td></tr>
+                        <tr><td><code>database.save_user(...)</code></td><td>ذخیره کاربر</td></tr>
+                        <tr><td><code>database.get_messages(chat_id=None, limit=50)</code></td><td>دریافت پیام ها</td></tr>
+                        <tr><td><code>database.get_user(user_id)</code></td><td>دریافت کاربر</td></tr>
+                    </tbody>
+                </table>
+
+                <h1 id="webhook">🌐 Webhook</h1>
+                <table class="method-table">
+                    <thead><tr><th>متد / کلاس</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>bot.set_webhook(url, host="0.0.0.0", port=5000)</code></td><td>تنظیم وب هوک و اجرای خودکار سرور</td></tr>
+                        <tr><td><code>bot.delete_webhook()</code></td><td>حذف وب هوک و متوقف کردن سرور</td></tr>
+                        <tr><td><code>bot.get_webhook_info()</code></td><td>دریافت وضعیت وب هوک</td></tr>
+                        <tr><td><code>WebhookServer(bot, host, port)</code></td><td>سرور وب هوک Sync</td></tr>
+                        <tr><td><code>AsyncWebhookServer(bot, host, port)</code></td><td>سرور وب هوک Async</td></tr>
+                    </tbody>
+                </table>
+
+                <h1 id="groupbot">👥 GroupBot</h1>
                 <pre><code><span style="color: #6791e0;">import</span> asyncio
-<span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> AsyncBot, Keypad, KeyButton
+<span style="color: #6791e0;">from</span> rubkey.async_rubkey <span style="color: #6791e0;">import</span> AsyncGroupBot
+<span style="color: #6791e0;">from</span> rubkey.groupbot <span style="color: #6791e0;">import</span> GroupHandlers
 
-bot = AsyncBot(token=<span style="color: #2fb170;">"TOKEN"</span>)
+bot = AsyncGroupBot(token=<span style="color: #2fb170;">"TOKEN"</span>)
+handlers = GroupHandlers()
 
-phone_keypad = Keypad(one_time=<span style="color: #c973d9;">True</span>).add_row(
-    KeyButton(<span style="color: #2fb170;">"send_phone"</span>, <span style="color: #2fb170;">"اشتراک تلفن"</span>, button_type=<span style="color: #2fb170;">"AskMyPhoneNumber"</span>)
-)
+<span style="color: #c973d9;">@handlers.command</span>(<span style="color: #2fb170;">"start"</span>, group_only=<span style="color: #c973d9;">True</span>)
+<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start</span>(msg, group_info):
+    <span style="color: #c973d9;">await</span> msg.reply(<span style="color: #2fb170;">f"گروه {group_info['title']}"</span>)
 
-<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"start"</span>)
-<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start</span>(msg):
-    <span style="color: #c973d9;">await</span> msg.reply(<span style="color: #2fb170;">"سلام"</span>, keypad=phone_keypad)
-
-<span style="color: #c973d9;">@bot.on_button</span>(<span style="color: #2fb170;">"send_phone"</span>)
-<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">get_phone</span>(msg):
-    <span style="color: #c973d9;">await</span> msg.reply(<span style="color: #2fb170;">f"شماره: {msg.text}"</span>)
+bot.set_group_handlers(handlers)
 
 <span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">main</span>():
     <span style="color: #c973d9;">await</span> bot.run()
 
 asyncio.run(main())</code></pre>
+                <table class="method-table">
+                    <thead><tr><th>متد / متغیر</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>GroupBot(token)</code></td><td>ساخت بات گروه</td></tr>
+                        <tr><td><code>GroupHandlers()</code></td><td>ساخت هندلرهای گروه</td></tr>
+                        <tr><td><code>bot.set_group_handlers(handlers)</code></td><td>تنظیم هندلرها</td></tr>
+                        <tr><td><code>bot.get_group_info(chat_id)</code></td><td>اطلاعات گروه</td></tr>
+                        <tr><td><code>bot.set_group_admin(id, user_id)</code></td><td>تنظیم ادمین</td></tr>
+                        <tr><td><code>bot.remove_group_admin(id, user_id)</code></td><td>حذف ادمین</td></tr>
+                        <tr><td><code>bot.is_group_admin(id, user_id)</code></td><td>بررسی ادمین</td></tr>
+                        <tr><td><code>bot.get_group_admins(id)</code></td><td>لیست ادمین ها</td></tr>
+                        <tr><td><code>bot.first_admin_on_start</code></td><td>اولین نفر ادمین شود</td></tr>
+                        <tr><td><code>bot.first_n_admins</code></td><td>تعداد ادمین های اول</td></tr>
+                        <tr><td><code>bot.no_admin_mode</code></td><td>حالت بدون ادمین</td></tr>
+                        <tr><td><code>bot.admin_only_ban</code></td><td>فقط ادمین بن کند</td></tr>
+                        <tr><td><code>bot.admins_can_bypass_delete</code></td><td>معافیت ادمین از حذف خودکار</td></tr>
+                        <tr><td><code>handlers.command("name", group_only=True)</code></td><td>دستور گروه</td></tr>
+                        <tr><td><code>handlers.on_message(group_only=True)</code></td><td>هندلر پیام گروه</td></tr>
+                        <tr><td><code>handlers.on_button("id", group_only=True)</code></td><td>دکمه گروه</td></tr>
+                        <tr><td><code>handlers.set_data(id, key, value)</code></td><td>ذخیره داده</td></tr>
+                        <tr><td><code>handlers.get_data(id, key, default)</code></td><td>دریافت داده</td></tr>
+                    </tbody>
+                </table>
+                <p><strong>group_info:</strong> <code>title</code>, <code>chat_id</code>, <code>type</code></p>
+
+                <h1 id="channelbot">📢 ChannelBot</h1>
+                <pre><code><span style="color: #6791e0;">import</span> asyncio
+<span style="color: #6791e0;">from</span> rubkey.async_rubkey <span style="color: #6791e0;">import</span> AsyncChannelBot
+
+bot = AsyncChannelBot(token=<span style="color: #2fb170;">"TOKEN"</span>)
+
+<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"start"</span>)
+<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start</span>(msg):
+    info = <span style="color: #c973d9;">await</span> bot.get_channel_info(msg.chat_id)
+    <span style="color: #c973d9;">await</span> msg.reply(<span style="color: #2fb170;">f"کانال: {info['title']}"</span>)
+
+<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">main</span>():
+    <span style="color: #c973d9;">await</span> bot.run()
+
+asyncio.run(main())</code></pre>
+                <table class="method-table">
+                    <thead><tr><th>متد / کلاس</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>ChannelBot(token)</code></td><td>ساخت بات کانال</td></tr>
+                        <tr><td><code>ChannelHandlers()</code></td><td>ساخت هندلرهای کانال</td></tr>
+                        <tr><td><code>bot.set_channel_handlers(handlers)</code></td><td>تنظیم هندلرها</td></tr>
+                        <tr><td><code>bot.get_channel_info(chat_id)</code></td><td>اطلاعات کانال</td></tr>
+                        <tr><td><code>bot.send_to_channel(id, text)</code></td><td>ارسال پیام به کانال</td></tr>
+                        <tr><td><code>bot.edit_in_channel(id, msg_id, text)</code></td><td>ویرایش پیام در کانال</td></tr>
+                        <tr><td><code>bot.delete_in_channel(id, msg_id)</code></td><td>حذف پیام در کانال</td></tr>
+                        <tr><td><code>bot.forward_to_channel(from, to, msg_id)</code></td><td>فوروارد به کانال</td></tr>
+                        <tr><td><code>bot.send_poll_to_channel(id, q, opts)</code></td><td>نظرسنجی در کانال</td></tr>
+                        <tr><td><code>handlers.command("name")</code></td><td>دستور کانال</td></tr>
+                        <tr><td><code>handlers.on_message()</code></td><td>هندلر پیام کانال</td></tr>
+                        <tr><td><code>handlers.set_data(id, key, value)</code></td><td>ذخیره داده</td></tr>
+                        <tr><td><code>handlers.get_data(id, key, default)</code></td><td>دریافت داده</td></tr>
+                    </tbody>
+                </table>
+                <p><strong>channel_info:</strong> <code>title</code>, <code>chat_id</code>, <code>type</code>, <code>username</code></p>
+
+                <h1 id="plugin-section">🧩 Plugin</h1>
+                <table class="method-table">
+                    <thead><tr><th>کلاس / متد</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>PluginLoader(bot, plugin_dir="plugins")</code></td><td>لودر پلاگین</td></tr>
+                        <tr><td><code>loader.load_all()</code></td><td>لود همه پلاگین ها</td></tr>
+                        <tr><td><code>loader.reload_all()</code></td><td>بارگذاری مجدد</td></tr>
+                        <tr><td><code>Plugin(info)</code></td><td>ساخت پلاگین</td></tr>
+                        <tr><td><code>PluginInfo(name, version, author, description)</code></td><td>اطلاعات پلاگین</td></tr>
+                    </tbody>
+                </table>
+
+                <h1 id="sendfile-section">📁 SendFile</h1>
+                <table class="method-table">
+                    <thead><tr><th>متد</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>SendFile(bot)</code></td><td>ساخت ارسال فایل</td></tr>
+                        <tr><td><code>sendfile.request_send_file(file_type="Image")</code></td><td>درخواست آپلود</td></tr>
+                        <tr><td><code>sendfile.upload_file(upload_url, file_path)</code></td><td>آپلود فایل</td></tr>
+                        <tr><td><code>sendfile.send_file(chat_id, file_id, text="")</code></td><td>ارسال فایل</td></tr>
+                        <tr><td><code>AsyncSendFile(bot)</code></td><td>ارسال فایل async</td></tr>
+                    </tbody>
+                </table>
+
+                <h1 id="async-section">⚡ Async</h1>
+                <h3>AsyncBot</h3>
+                <table class="method-table">
+                    <thead><tr><th>متد</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>AsyncBot(token)</code></td><td>ساخت بات async</td></tr>
+                        <tr><td><code>await bot.run()</code></td><td>اجرای بات</td></tr>
+                        <tr><td><code>await bot.send_message(chat_id, text, ...)</code></td><td>ارسال پیام</td></tr>
+                        <tr><td><code>await bot.edit_message(...)</code></td><td>ویرایش پیام</td></tr>
+                        <tr><td><code>await bot.delete_message(...)</code></td><td>حذف پیام</td></tr>
+                        <tr><td><code>await bot.send_poll(...)</code></td><td>نظرسنجی</td></tr>
+                        <tr><td><code>await bot.send_file(...)</code></td><td>ارسال فایل</td></tr>
+                        <tr><td><code>await bot.forward_message(...)</code></td><td>فوروارد</td></tr>
+                        <tr><td><code>bot.set_webhook(url)</code></td><td>تنظیم وب هوک</td></tr>
+                        <tr><td><code>bot.delete_webhook()</code></td><td>حذف وب هوک</td></tr>
+                        <tr><td><code>bot.get_webhook_info()</code></td><td>وضعیت وب هوک</td></tr>
+                    </tbody>
+                </table>
+                <h3>AsyncGroupBot</h3>
+                <table class="method-table">
+                    <thead><tr><th>متد</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>AsyncGroupBot(token)</code></td><td>ساخت بات گروه async</td></tr>
+                        <tr><td><code>await bot.get_group_info(chat_id)</code></td><td>اطلاعات گروه</td></tr>
+                        <tr><td><code>bot.set_group_admin(id, user_id)</code></td><td>تنظیم ادمین</td></tr>
+                        <tr><td><code>bot.is_group_admin(id, user_id)</code></td><td>بررسی ادمین</td></tr>
+                        <tr><td><code>bot.get_group_admins(id)</code></td><td>لیست ادمین ها</td></tr>
+                    </tbody>
+                </table>
+                <h3>AsyncChannelBot</h3>
+                <table class="method-table">
+                    <thead><tr><th>متد</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>AsyncChannelBot(token)</code></td><td>ساخت بات کانال async</td></tr>
+                        <tr><td><code>await bot.get_channel_info(chat_id)</code></td><td>اطلاعات کانال</td></tr>
+                        <tr><td><code>await bot.send_to_channel(id, text)</code></td><td>ارسال به کانال</td></tr>
+                        <tr><td><code>await bot.edit_in_channel(...)</code></td><td>ویرایش در کانال</td></tr>
+                        <tr><td><code>await bot.delete_in_channel(...)</code></td><td>حذف در کانال</td></tr>
+                        <tr><td><code>await bot.forward_to_channel(...)</code></td><td>فوروارد به کانال</td></tr>
+                        <tr><td><code>await bot.send_poll_to_channel(...)</code></td><td>نظرسنجی در کانال</td></tr>
+                    </tbody>
+                </table>
+                <h3>AsyncSendFile</h3>
+                <table class="method-table">
+                    <thead><tr><th>متد</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>AsyncSendFile(bot)</code></td><td>ساخت ارسال فایل async</td></tr>
+                        <tr><td><code>await sendfile.request_send_file(type)</code></td><td>درخواست آپلود</td></tr>
+                        <tr><td><code>await sendfile.upload_file(url, path)</code></td><td>آپلود فایل</td></tr>
+                        <tr><td><code>await sendfile.send_file(id, file_id, text)</code></td><td>ارسال فایل</td></tr>
+                    </tbody>
+                </table>
+                <h3>AsyncWebhookServer</h3>
+                <table class="method-table">
+                    <thead><tr><th>متد</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>AsyncWebhookServer(bot, host, port)</code></td><td>سرور وب هوک async</td></tr>
+                        <tr><td><code>server.run()</code></td><td>اجرای سرور</td></tr>
+                        <tr><td><code>server.run_in_thread()</code></td><td>اجرا در ترد جدا</td></tr>
+                        <tr><td><code>server.stop()</code></td><td>توقف سرور</td></tr>
+                    </tbody>
+                </table>
 
                 <h1 id="selfbot">🤖 SelfBot</h1>
                 <p>سلف بات با اکانت شخصی. فقط پیوی پشتیبانی میشود.</p>
@@ -724,86 +899,6 @@ send_code_btn = SendCodeButton(<span style="color: #2fb170;">"send_code"</span>,
 
 bot.run()</code></pre>
 
-                <h1 id="metadata"></h1>
-
-                <h1 id="middleware">🔗 Middleware و Router</h1>
-                <pre><code><span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> Rubkey, Router
-
-bot = Rubkey(token=<span style="color: #2fb170;">"TOKEN"</span>)
-
-<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">log_middleware</span>(msg, bot):
-    <span style="color: #6791e0;">print</span>(<span style="color: #2fb170;">f"پیام از {msg.sender_id}"</span>)
-    <span style="color: #6791e0;">return</span> msg
-
-bot.add_middleware(log_middleware)
-
-router = Router()
-
-<span style="color: #c973d9;">@router.command</span>(<span style="color: #2fb170;">"test"</span>)
-<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">test</span>(msg):
-    msg.reply(<span style="color: #2fb170;">"Router"</span>)
-
-bot.include_router(router)
-
-<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"start"</span>)
-<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start</span>(msg):
-    msg.reply(<span style="color: #2fb170;">"سلام"</span>)
-
-bot.run()</code></pre>
-
-                <h1 id="session">💾 Session و Database</h1>
-                <pre><code><span style="color: #6791e0;">from</span> rubkey <span style="color: #6791e0;">import</span> Rubkey, Session
-
-bot = Rubkey(token=<span style="color: #2fb170;">"TOKEN"</span>)
-session = Session(<span style="color: #2fb170;">"user_data.json"</span>)
-
-<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"save"</span>)
-<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">save</span>(msg):
-    session.set(msg.sender_id, <span style="color: #2fb170;">"name"</span>, <span style="color: #2fb170;">"تست"</span>)
-    msg.reply(<span style="color: #2fb170;">"ذخیره شد"</span>)
-
-<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"load"</span>)
-<span style="color: #c973d9;">def</span> <span style="color: #c973d9;">load</span>(msg):
-    name = session.get(msg.sender_id, <span style="color: #2fb170;">"name"</span>, <span style="color: #2fb170;">"ناشناس"</span>)
-    msg.reply(<span style="color: #2fb170;">f"نام: {name}"</span>)
-
-bot.run()</code></pre>
-
-                <h1 id="groupbot">👥 GroupBot</h1>
-                <pre><code><span style="color: #6791e0;">import</span> asyncio
-<span style="color: #6791e0;">from</span> rubkey.async_rubkey <span style="color: #6791e0;">import</span> AsyncGroupBot
-<span style="color: #6791e0;">from</span> rubkey.groupbot <span style="color: #6791e0;">import</span> GroupHandlers
-
-bot = AsyncGroupBot(token=<span style="color: #2fb170;">"TOKEN"</span>)
-handlers = GroupHandlers()
-
-<span style="color: #c973d9;">@handlers.command</span>(<span style="color: #2fb170;">"start"</span>, group_only=<span style="color: #c973d9;">True</span>)
-<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start</span>(msg, group_info):
-    <span style="color: #c973d9;">await</span> msg.reply(<span style="color: #2fb170;">f"گروه {group_info['title']}"</span>)
-
-bot.set_group_handlers(handlers)
-
-<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">main</span>():
-    <span style="color: #c973d9;">await</span> bot.run()
-
-asyncio.run(main())</code></pre>
-
-                <h1 id="channelbot">📢 ChannelBot</h1>
-                <pre><code><span style="color: #6791e0;">import</span> asyncio
-<span style="color: #6791e0;">from</span> rubkey.async_rubkey <span style="color: #6791e0;">import</span> AsyncChannelBot
-
-bot = AsyncChannelBot(token=<span style="color: #2fb170;">"TOKEN"</span>)
-
-<span style="color: #c973d9;">@bot.command</span>(<span style="color: #2fb170;">"start"</span>)
-<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">start</span>(msg):
-    info = <span style="color: #c973d9;">await</span> bot.get_channel_info(msg.chat_id)
-    <span style="color: #c973d9;">await</span> msg.reply(<span style="color: #2fb170;">f"کانال: {info['title']}"</span>)
-
-<span style="color: #c973d9;">async</span> <span style="color: #c973d9;">def</span> <span style="color: #c973d9;">main</span>():
-    <span style="color: #c973d9;">await</span> bot.run()
-
-asyncio.run(main())</code></pre>
-
                 <h1 id="examples">📝 مثال های کامل</h1>
 
                 <h3>ربات نظرسنجی در گروه</h3>
@@ -824,7 +919,7 @@ bot.run()</code></pre>
                     <p><strong>نویسنده:</strong> طاها انصاریان پور</p>
                     <p><strong>ایمیل:</strong> codetansarian@gmail.com</p>
                     <p><strong>کانال روبیکا:</strong> <a href="https://rubika.ir/library_rubkey">@library_rubkey</a></p>
-                    <p><strong>لایسنس:</strong> MIT | <strong>نسخه:</strong> 2.0.7.1 | <strong>Python:</strong> >=3.8</p>
+                    <p><strong>لایسنس:</strong> Apache 2.0 | <strong>نسخه:</strong> 2.0.8 | <strong>Python:</strong> >=3.8</p>
                 </div>
             </article>
         </main>
